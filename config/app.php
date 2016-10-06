@@ -2,6 +2,19 @@
 
 return [
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    'env' => env('APP_ENV', 'production'),
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -15,18 +28,18 @@ return [
 
 	'debug' => env('APP_DEBUG'),
 
-	/*
-	|--------------------------------------------------------------------------
-	| Application URL
-	|--------------------------------------------------------------------------
-	|
-	| This URL is used by the console to properly generate URLs when using
-	| the Artisan command line tool. You should set this to the root of
-	| your application so that it is used when running Artisan tasks.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | your application so that it is used when running Artisan tasks.
+    |
+    */
 
-	'url' => 'http://localhost',
+    'url' => env('APP_URL', 'http://localhost'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -82,20 +95,22 @@ return [
 
 	'cipher' => 'AES-256-CBC',
 
-	/*
-	|--------------------------------------------------------------------------
-	| Logging Configuration
-	|--------------------------------------------------------------------------
-	|
-	| Here you may configure the log settings for your application. Out of
-	| the box, Laravel uses the Monolog PHP logging library. This gives
-	| you a variety of powerful log handlers / formatters to utilize.
-	|
-	| Available Settings: "single", "daily", "syslog", "errorlog"
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log settings for your application. Out of
+    | the box, Laravel uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
+    | Available Settings: "single", "daily", "syslog", "errorlog"
+    |
+    */
 
-	'log' => 'single',
+    'log' => env('APP_LOG', 'single'),
+
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -113,13 +128,10 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
-        Illuminate\Bus\BusServiceProvider::class,
-        Illuminate\Cache\CacheServiceProvider::class,
+        Illuminate\Cache\CacheServiceProvider::class,        Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -141,13 +153,15 @@ return [
 		 * Application Service Providers...
 		 */
         App\Providers\AppServiceProvider::class,
-		App\Providers\BusServiceProvider::class,
-		App\Providers\ConfigServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,					// https://github.com/illuminate/html
+        Collective\Html\HtmlServiceProvider::class,
     	App\Providers\MacroServiceProvider::class,					// TAKE NOTE: This needs to load after HtmlServiceProvider
+
+
+
         Laravel\Socialite\SocialiteServiceProvider::class,
+
         SocialiteProviders\Manager\ServiceProvider::class,
 	],
 
@@ -197,10 +211,8 @@ return [
         'URL'           => Illuminate\Support\Facades\URL::class,
         'Validator'     => Illuminate\Support\Facades\Validator::class,
         'View'          => Illuminate\Support\Facades\View::class,
-
-        // ADD BACK IN LARAVEL FORM CLASSES WITH ALIASES - https://github.com/illuminate/html
-        'HTML'          => Illuminate\Html\HtmlFacade::class,
-        'Form'          => Illuminate\Html\FormFacade::class,
+        'Form' 			=> Collective\Html\FormFacade::class,
+        'HTML' 			=> Collective\Html\HtmlFacade::class,
 
         // ADD SOCIALITE
         'Socialite' 	=> Laravel\Socialite\Facades\Socialite::class,
