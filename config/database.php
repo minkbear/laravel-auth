@@ -13,18 +13,18 @@ return [
 	|
 	*/
 
-	'fetch' => PDO::FETCH_CLASS,
+    'fetch' => PDO::FETCH_OBJ,
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Database Connection Name
-	|--------------------------------------------------------------------------
-	|
-	| Here you may specify which of the database connections below you wish
-	| to use as your default connection for all database work. Of course
-	| you may use many connections at once using the Database library.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Default Database Connection Name
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify which of the database connections below you wish
+    | to use as your default connection for all database work. Of course
+    | you may use many connections at once using the Database library.
+    |
+    */
 
 	'default' => 'mysql',
 
@@ -72,7 +72,8 @@ return [
 			'password' => env('DB_PASSWORD', ''),
 			'charset'  => 'utf8',
 			'prefix'   => '',
-			'schema'   => 'public',
+            'sslmode' => 'prefer',
+            'schema'   => 'public',
 		],
 
 		'sqlsrv' => [

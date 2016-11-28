@@ -49,7 +49,15 @@ return [
 
 		'memcached' => [
 			'driver'  => 'memcached',
-			'servers' => [
+            'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
+            'sasl' => [
+                env('MEMCACHED_USERNAME'),
+                env('MEMCACHED_PASSWORD'),
+            ],
+            'options' => [
+                // Memcached::OPT_CONNECT_TIMEOUT  => 2000,
+            ],
+            'servers' => [
 				[
 					'host' => '127.0.0.1', 'port' => 11211, 'weight' => 100
 				],
