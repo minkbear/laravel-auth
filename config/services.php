@@ -85,4 +85,8 @@ return [
 	    'redirect' 		=> env('37SIGNALS_REDIRECT_URI'),
 	],
 
+    'google_recaptcha' => [
+        'site'     => env('RE_CAP_SITE'),
+        'secret' => env('RE_CAP_SECRET')
+    ],
 ];
