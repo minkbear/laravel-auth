@@ -7,7 +7,7 @@ abstract class Mailer {
         \Mail::queue($view, $data, function($message) use($email, $subject, $fromEmail)
         {
 
-            $message->from($fromEmail, env('MAIL_USERNAME'));
+            $message->from($fromEmail, config('mail.from.name'));
 
             $message->to($email)->subject($subject);
 
